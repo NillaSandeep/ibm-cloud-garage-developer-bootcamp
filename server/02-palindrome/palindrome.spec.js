@@ -5,7 +5,8 @@ describe.only('the palindrome canary spec', () => {
 
 
   function isPalindrome(phrase) {
-    return phrase.split('').reverse().join('') === phrase;
+    if (phrase.trim().length === 0) return false;
+      return phrase.split('').reverse().join('') === phrase;
   }
 
   describe(' a palindrome ', () => {
@@ -16,10 +17,16 @@ describe.only('the palindrome canary spec', () => {
       isPalindrome('racecars').should.be.false();
     });
     it('is not a "race car"', () => {
-
+      isPalindrome('race car').should.be.false();
     });
-    it('"   " is not a palindrome');
-    it('"" is not a palindrome');
-    it('is "mom dad mom"');
+    it('"   " is not a palindrome', () => {
+      isPalindrome('   ').should.be.false();
+    });
+    it('"" is not a palindrome', () => {
+      isPalindrome('').should.be.false();
+    });
+    it('is "mom dad mom"', () => {
+      isPalindrome('mom dad mom').should.be.true();
+    });
   });
 });
