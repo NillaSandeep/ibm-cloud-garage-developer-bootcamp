@@ -1,15 +1,15 @@
 const makeStack = () => {
-  let stackSize = 0;
+  const stackValues = [];
   return {
-    isEmpty: () => stackSize === 0,
-    size: () => stackSize,
-    push: () => {
-      if (stackSize === 3) throw new Error('Stack Size Cannot Exceed 3');
-      stackSize++;
+    isEmpty: () => stackValues.length === 0,
+    size: () => stackValues.length,
+    push: (pushVal) => {
+      if (stackValues.length === 3) throw new Error('Stack Size Cannot Exceed 3');
+      stackValues.push(pushVal);
     },
   pop: () => {
-    if (stackSize === 0) throw new Error('Stack size cannot be less than 0');
-    stackSize--;
+    if (stackValues.length === 0) throw new Error('Stack size cannot be less than 0');
+    return stackValues.pop();
     }
   };
 };
@@ -58,7 +58,16 @@ describe.only('the stack spec', () => {
     const doUnderflow = () => {stack.pop();};
     doUnderflow.should.throw('Stack size cannot be less than 0');
   });
-  it('pops the same one pushed');
-  it('pops the same two pushed');
+  it('pops the same one pushed', () => {
+    const testVal = 'blue';
+    stack.push(testVal);
+    stack.pop().should.equal(testVal);
+  });
+  it('pops the same two pushed', () => {
+    stack.push('blue');
+    stack.push('red');
+    stack.pop().should.equal('red');
+    stack.pop().should.equal('blue');
+  });
   it('accepts only positive capacity');
 });
