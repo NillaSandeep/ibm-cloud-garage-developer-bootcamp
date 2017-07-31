@@ -17,10 +17,11 @@ const makeStack = (capacity) => {
 
 let stack;
 
-describe.only('the stack spec', () => {
+describe('the stack spec', () => {
   beforeEach(() => {
     stack = makeStack(3);
   });
+
   it('starts empty', () => {
     stack.isEmpty().should.be.true();
   });
@@ -33,22 +34,25 @@ describe.only('the stack spec', () => {
     stack.push();
     stack.isEmpty().should.be.false();
   });
+
   it('leaves stack size 1 when pushed', () => {
     stack.push();
     stack.size().should.equal(1);
   });
+
   it('leaves stack empty when pushed and popped', () => {
     stack.push();
     stack.pop();
     stack.isEmpty().should.be.true();
   });
+
   it('leaves stack size 0 when pushed and popped', () => {
     stack.push();
     stack.pop();
     stack.size().should.equal(0);
   });
+
   it('overflows', () => {
-   // stack.setCapacity(3);
     const doOverflow = () => {stack.push();};
     stack.push();
     stack.push();
@@ -60,17 +64,20 @@ describe.only('the stack spec', () => {
     const doUnderflow = () => {stack.pop();};
     doUnderflow.should.throw('Stack size cannot be less than 0');
   });
+
   it('pops the same one pushed', () => {
     const testVal = 'blue';
     stack.push(testVal);
     stack.pop().should.equal(testVal);
   });
+
   it('pops the same two pushed', () => {
     stack.push('blue');
     stack.push('red');
     stack.pop().should.equal('red');
     stack.pop().should.equal('blue');
   });
+
   it('accepts only positive capacity', () => {
     const checkCapacity = () => {makeStack(-1);};
     checkCapacity.should.throw('Size should be a positive integer');
