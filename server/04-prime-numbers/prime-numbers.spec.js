@@ -1,5 +1,12 @@
+function primeFactorsOf() {
+  return [];
+}
+
 describe.only('the prime numbers canary spec', () => {
-  it('returns none for 1');
+  it('returns none for 1', () => {
+    primeFactorsOf(1).should.deepEqual([]);
+  });
+
   it('returns [2] for 2');
   it('returns [3] for 3');
   it('returns [2, 2] for 4');
