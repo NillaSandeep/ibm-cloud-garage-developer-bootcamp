@@ -13,7 +13,6 @@
     "lint:yml": "yamllint .travis.yml",
     "lint:ci": "npm run lint",
     "lint:watch": "nodemon  --exec npm run lint",
-    "lint:mac": "nodemon 2>/dev/null  --exec 'npm run lint'",
     "precommit": "npm-run-all clear lint spec test:ci",
     "prepush": "npm run ci",
     "server:coverage": "nyc --reporter=lcov --reporter=text --require babel-register npm run spec",
