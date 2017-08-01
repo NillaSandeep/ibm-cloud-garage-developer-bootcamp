@@ -9,7 +9,7 @@ function primeFactorsOf(number) {
   return factors;
 }
 
-describe.only('the prime numbers canary spec', () => {
+describe('the prime numbers canary spec', () => {
   it('returns none for 1', () => {
     primeFactorsOf(1).should.deepEqual([]);
   });
@@ -50,7 +50,7 @@ describe.only('the prime numbers canary spec', () => {
     primeFactorsOf(100).should.deepEqual([2, 2, 5, 5]);
   });
 
-  // it('returns [2, 2, 5, 5] for 100', () => {
-  //   primeFactorsOf(2016).should.deepEqual([2, 2, 5, 5]);
-  // });
+  it('returns [2, 2, 2, 2, 2, 3, 3, 7] for 2016', () => {
+     primeFactorsOf(2016).should.deepEqual([2, 2, 2, 2, 2, 3, 3, 7]);
+  });
 });
